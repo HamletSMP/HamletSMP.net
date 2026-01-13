@@ -63,7 +63,7 @@ ${portfolio || "Not provided"}
       },
       body: JSON.stringify({
         personalizations: [{
-          to: [{ email: env.ADMIN_EMAIL }],
+          to: [{ email: env.TO_EMAIL }],
           subject: `New Application: ${fullName} - ${position}`
         }],
         from: { email: env.FROM_EMAIL, name: "Hamlet SMP Application Bot" },
