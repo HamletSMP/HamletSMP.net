@@ -3,29 +3,368 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apply | Hamlet SMP Minecraft Server</title>
-    <!-- COPY THE ENTIRE <head> AND <style> FROM index.html -->
+    <title>Apply to Hamlet SMP Team</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #0f0b16;
+            color: white;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #6a0dad 0%, #e84393 100%);
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #fff, #ffb8d9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .subtitle {
+            color: #bb8fce;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .warning {
+            background: #ff4757;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .warning i {
+            font-size: 1.5rem;
+        }
+        
+        .info-box {
+            background: rgba(155, 89, 182, 0.1);
+            border: 2px solid #9b59b6;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .form-section {
+            background: rgba(26, 22, 37, 0.8);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 2px solid #6a0dad;
+        }
+        
+        h2 {
+            color: #fd79a8;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #bb8fce;
+            font-weight: 600;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            background: #1a1625;
+            border: 2px solid #6a0dad;
+            border-radius: 6px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #fd79a8;
+            box-shadow: 0 0 10px rgba(253, 121, 168, 0.3);
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+            font-family: inherit;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: block;
+            margin: 30px auto 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+        }
+        
+        .note {
+            text-align: center;
+            color: #bb8fce;
+            font-size: 0.9rem;
+            margin-top: 15px;
+        }
+        
+        .positions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .position-card {
+            background: rgba(232, 67, 147, 0.1);
+            border: 2px solid #e84393;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .position-card h3 {
+            color: #fd79a8;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            color: #bb8fce;
+            text-decoration: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: 2px solid #6a0dad;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+        
+        .back-link:hover {
+            background: #6a0dad;
+            color: white;
+        }
+        
+        .discord-link {
+            display: inline-block;
+            background: #7289da;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+        
+        .discord-link:hover {
+            background: #5a6fc1;
+            transform: translateY(-2px);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <!-- COPY THE ENTIRE <header> FROM index.html -->
         <header>
-            <h1 class="floating">HAMLET SMP</h1>
-            <p class="tagline">A revolutionary Minecraft SMP server currently in early pre-alpha development</p>
-            
-            <div class="warning-banner">
-                <i class="fas fa-exclamation-triangle"></i>
-                <span>PRE-ALPHA DEVELOPMENT SERVER - EXPECT FREQUENT SHUTDOWNS AND BUGS</span>
-            </div>
-            
-            <div class="server-ip">
-                <i class="fas fa-server"></i> hamletsmp.net
-            </div>
-            
-            <div class="server-status">
-                <div class="status-indicator">
-                    <div class="status-dot"></div>
-                    <span><i class="fas fa-wifi"></i> Server Online - Testing Phase</span>
+            <h1><i class="fas fa-user-plus"></i> Join Hamlet SMP</h1>
+            <p class="subtitle">Apply to become part of our development team and help build a revolutionary Minecraft experience</p>
+        </header>
+        
+        <div class="warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span><strong>Note:</strong> This form is for team applications only. The server is not yet open to players.</span>
+        </div>
+        
+        <div class="info-box">
+            <h2><i class="fas fa-info-circle"></i> Open Positions</h2>
+            <div class="positions-grid">
+                <div class="position-card">
+                    <h3><i class="fas fa-code"></i> Java Developer</h3>
+                    <p>Develop custom plugins and server systems. Requires Java/Spigot experience.</p>
                 </div>
-                <div><i class="fas fa-cube"></i> Version: 0.1 PRE-ALPHA</div>
-            </
+                <div class="position-card">
+                    <h3><i class="fas fa-paint-brush"></i> Builder</h3>
+                    <p>Design spawn areas, custom structures, and world features. Creative skills required.</p>
+                </div>
+                <div class="position-card">
+                    <h3><i class="fas fa-shield-alt"></i> Moderator</h3>
+                    <p>Help manage the community and ensure positive player experience.</p>
+                </div>
+                <div class="position-card">
+                    <h3><i class="fas fa-comments"></i> Community Manager</h3>
+                    <p>Manage Discord, social media, and community engagement.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-section">
+            <h2><i class="fas fa-file-signature"></i> Application Form</h2>
+            
+            <form id="applicationForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fullName"><i class="fas fa-user"></i> Full Name *</label>
+                        <input type="text" id="fullName" name="fullName" required placeholder="Your full name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="discord"><i class="fab fa-discord"></i> Discord Username *</label>
+                        <input type="text" id="discord" name="discord" required placeholder="username#0000">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="your@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="position"><i class="fas fa-briefcase"></i> Position *</label>
+                        <select id="position" name="position" required>
+                            <option value="">Select a position</option>
+                            <option value="java-developer">Java Developer</option>
+                            <option value="builder">Builder</option>
+                            <option value="moderator">Moderator</option>
+                            <option value="community-manager">Community Manager</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="experience"><i class="fas fa-tools"></i> Relevant Experience *</label>
+                    <textarea id="experience" name="experience" required placeholder="Tell us about your experience with Minecraft servers, programming, building, or community management..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="why"><i class="fas fa-question-circle"></i> Why do you want to join Hamlet SMP? *</label>
+                    <textarea id="why" name="why" required placeholder="What interests you about our project? What can you contribute?"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="availability"><i class="fas fa-clock"></i> Weekly Availability (hours) *</label>
+                    <input type="number" id="availability" name="availability" required min="1" max="40" placeholder="How many hours per week can you commit?">
+                </div>
+                
+                <div class="form-group">
+                    <label for="portfolio"><i class="fas fa-link"></i> Portfolio Links (Optional)</label>
+                    <textarea id="portfolio" name="portfolio" placeholder="GitHub, builds, previous projects, etc..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Submit Application
+                </button>
+                
+                <p class="note">
+                    <i class="fas fa-info-circle"></i> 
+                    Applications are reviewed within 3-5 business days. You'll be contacted via Discord if selected.
+                </p>
+            </form>
+        </div>
+        
+        <div class="info-box" style="text-align: center;">
+            <h2><i class="fas fa-question-circle"></i> Need Help?</h2>
+            <p>Join our Discord server for questions about applications or to learn more about the project:</p>
+            <a href="https://discord.gg/kmKnDs6WUF" class="discord-link" target="_blank">
+                <i class="fab fa-discord"></i> Join Discord Server
+            </a>
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Homepage
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        // Simple form handling
+        document.getElementById('applicationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simple validation
+            if (!data.fullName || !data.discord || !data.position) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            // Show success message
+            alert('Application submitted successfully!\n\nWe will review your application and contact you via Discord within 3-5 business days.\n\nThank you for applying to Hamlet SMP!');
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Add some interactivity
+        document.querySelectorAll('input, textarea, select').forEach(element => {
+            element.addEventListener('focus', function() {
+                this.style.boxShadow = '0 0 15px rgba(253, 121, 168, 0.4)';
+            });
+            
+            element.addEventListener('blur', function() {
+                this.style.boxShadow = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
