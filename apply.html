@@ -827,66 +827,7 @@
         }, 1000);
     }
     
-    // FORM SUBMISSION - WORKING VERSION
-    const form = document.getElementById('applicationForm');
-    if (form) {
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Simple validation
-            if (!data.fullName || !data.discord || !data.position || !data.email) {
-                alert('Please fill in all required fields');
-                return;
-            }
-            
-            // Show loading
-            const submitBtn = this.querySelector('.submit-button');
-            const originalBtnText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
-            submitBtn.disabled = true;
-            
-            try {
-                // Using FormSubmit.co (free service that emails you)
-                const response = await fetch('https://formsubmit.co/ajax/hamletsmpapplication@gmail.com', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        ...data,
-                        _subject: `New Application: ${data.fullName} - ${data.position}`,
-                        _template: 'table'
-                    })
-                });
-                
-                const result = await response.json();
-                
-                if (result.success) {
-                    alert('✅ Application submitted successfully!\n\n' +
-                          'We will review your application and contact you via Discord within 3-5 business days.\n\n' +
-                          'Thank you for applying to Hamlet SMP!');
-                    
-                    // Reset form
-                    this.reset();
-                } else {
-                    throw new Error('Submission failed');
-                }
-                
-            } catch (error) {
-                console.error('Error:', error);
-                alert('❌ Error submitting. Please try again or contact us on Discord.');
-            } finally {
-                submitBtn.innerHTML = originalBtnText;
-                submitBtn.disabled = false;
-            }
-        });
-    }
-    
+
     // Highlight current page in navigation
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('nav a').forEach(link => {
