@@ -826,22 +826,14 @@
             }, 1000);
         }
         
-        // Form submission
-       <!-- Replace the existing form submission script section with this: -->
 
-<script>
     // SendGrid API Configuration
     const SENDGRID_API_URL = 'https://api.sendgrid.com/v3/mail/send';
-    const SENDGRID_API_KEY = 'YOUR_SENDGRID_API_KEY_HERE'; // Replace with your actual SendGrid API key
-    const ADMIN_EMAIL = 'your-admin@email.com'; // Replace with admin email to receive applications
-    const FROM_EMAIL = 'noreply@hamletsmp.net'; // Replace with your sender email
+    const SENDGRID_API_KEY = ''; // Replace with your actual SendGrid API key
+    const TO_EMAIL = 'hamletsmpapplication@gmail.com'; // Replace with admin email to receive applications
+    const FROM_EMAIL = 'hamletsmp@gmail.com'; // Replace with your sender email
     
-    // Form submission
-    const applicationForm = document.getElementById('applicationForm');
-    if (applicationForm) {
-        applicationForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
+
             // Get form data
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
