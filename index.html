@@ -48,6 +48,8 @@
                 inset 0 0 30px rgba(0, 0, 0, 0.7);
             border-radius: 8px;
             overflow: hidden;
+            margin-top: 20px;
+            margin-bottom: 20px;
         }
         
         /* Header */
@@ -253,6 +255,20 @@
             border-bottom-color: var(--pink);
         }
         
+        /* Full width pages */
+        .full-width {
+            padding: 40px;
+        }
+        
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--pink);
+            font-size: 2.5rem;
+            color: var(--pink-light);
+        }
+        
         /* Server Status */
         .server-status {
             display: flex;
@@ -381,7 +397,7 @@
             border-color: #99aab5;
         }
         
-        /* Developer Application Button - Consistent across site */
+        /* Developer Application Button */
         .dev-application-button {
             display: inline-flex;
             align-items: center;
@@ -440,6 +456,59 @@
             font-weight: bold;
             margin-left: 10px;
             vertical-align: middle;
+        }
+        
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--pink-light);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--gray-dark);
+            border: 2px solid var(--purple);
+            border-radius: 8px;
+            color: var(--white);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--pink);
+            box-shadow: 0 0 15px rgba(232, 67, 147, 0.4);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
         }
         
         /* Footer */
@@ -513,9 +582,99 @@
                 border-bottom: 1px solid var(--gray);
             }
             
-            .main-content {
+            .main-content, .full-width {
                 padding: 20px;
             }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+        }
+        
+        /* FAQ Styles */
+        .faq-item {
+            margin-bottom: 25px;
+            border: 2px solid var(--purple);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            background: linear-gradient(135deg, rgba(155, 89, 182, 0.3), rgba(232, 67, 147, 0.3));
+            padding: 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--pink-light);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            padding: 20px;
+            background-color: rgba(26, 22, 37, 0.8);
+            display: none;
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        /* Team Grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .team-member {
+            background: linear-gradient(145deg, rgba(155, 89, 182, 0.2), rgba(232, 67, 147, 0.2));
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid var(--purple);
+        }
+        
+        .team-member h3 {
+            color: var(--pink-light);
+            margin-bottom: 10px;
+        }
+        
+        .team-role {
+            color: var(--purple-light);
+            font-style: italic;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        /* Contact Info */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .contact-item {
+            background: linear-gradient(145deg, rgba(155, 89, 182, 0.2), rgba(232, 67, 147, 0.2));
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid var(--purple);
+        }
+        
+        .contact-item i {
+            font-size: 2.5rem;
+            color: var(--pink);
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .contact-item h3 {
+            color: var(--pink-light);
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -545,15 +704,15 @@
         
         <nav>
             <ul>
-                <li><a href="#home" class="active"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="#development"><i class="fas fa-code"></i> Development</a></li>
-                <li><a href="#apply"><i class="fas fa-user-plus"></i> Apply</a></li>
-                <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="apply.html"><i class="fas fa-user-plus"></i> Apply</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
                 <li><a href="https://discord.gg/kmKnDs6WUF" target="_blank"><i class="fab fa-discord"></i> Discord</a></li>
-                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
             </ul>
         </nav>
         
+        <!-- HOME PAGE CONTENT -->
         <div class="main-content">
             <div class="left-column">
                 <div class="content-box">
@@ -561,8 +720,6 @@
                     <p><strong>Hamlet SMP is currently in PRE-ALPHA (0.1) development.</strong> This means the server is in early testing phase and not yet ready for public gameplay. We are actively recruiting developers, plugin creators, and dedicated staff to help build this revolutionary SMP experience from the ground up.</p>
                     
                     <p>The server will experience frequent restarts, downtime, and bugs as we develop our unique vision for Minecraft multiplayer. We're building something truly special here, and we need talented individuals to help bring this ambitious project to life.</p>
-                    
-                    <!-- REMOVED DEVELOPER BUTTON FROM HERE -->
                 </div>
                 
                 <div class="content-box pink">
@@ -585,8 +742,6 @@
                             <p>Core systems are currently being designed and implemented. We're building the foundation for what will become a groundbreaking Minecraft server experience.</p>
                         </div>
                     </div>
-                    
-                    <!-- REMOVED DEVELOPER BUTTON FROM HERE -->
                 </div>
                 
                 <div class="content-box">
@@ -597,14 +752,12 @@
                     <p style="margin-top: 20px; color: var(--pink-light); font-style: italic;">
                         <i class="fas fa-code-branch"></i> We're building this from scratch - no pre-made plugins or templates. Everything is custom.
                     </p>
-                    
-                    <!-- REMOVED DISCORD AND DEVELOPER BUTTONS FROM HERE -->
                 </div>
             </div>
             
             <div class="right-column">
                 <div class="content-box pink">
-                    <h2><i class="fas fa-bullhorn"></i> Apply Now</h2>
+                    <h2><i class="fas fa-bullhorn"></i> Quick Apply</h2>
                     <p>We're actively recruiting for the following positions:</p>
                     <ul style="list-style: none; margin: 20px 0;">
                         <li style="padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
@@ -625,7 +778,7 @@
                         </li>
                     </ul>
                     
-                    <a href="#apply" class="dev-application-button">
+                    <a href="apply.html" class="dev-application-button">
                         <i class="fas fa-code"></i> Apply for Developer Role
                     </a>
                 </div>
@@ -640,7 +793,7 @@
                         <a href="https://discord.gg/kmKnDs6WUF" class="mc-button discord" target="_blank">
                             <i class="fab fa-discord"></i> Join Discord Server
                         </a>
-                        <a href="#apply" class="dev-application-button">
+                        <a href="apply.html" class="dev-application-button">
                             <i class="fas fa-code"></i> Apply for Developer Role
                         </a>
                         <a href="#status" class="mc-button">
@@ -665,18 +818,15 @@
                             <i class="fas fa-exclamation-circle"></i> This is not a finished product. Expect bugs, crashes, and frequent maintenance as we develop.
                         </p>
                     </div>
-                    
-                    <!-- REMOVED DEVELOPER BUTTON FROM HERE -->
                 </div>
             </div>
         </div>
+        <!-- END HOME PAGE CONTENT -->
         
         <footer>
             <p><i class="fas fa-cube"></i> Hamlet SMP Development Server | hamletsmp.net</p>
             <p>© 2026 Hamlet SMP Development Team. Server currently in Pre-Alpha (0.1) testing phase.</p>
             <p>Minecraft is a trademark of Mojang AB. This server is not affiliated with Mojang or Microsoft.</p>
-            
-            <!-- REMOVED DEVELOPER BUTTON FROM FOOTER -->
             
             <div class="social-links">
                 <a href="https://discord.gg/kmKnDs6WUF" class="social-icon" target="_blank"><i class="fab fa-discord"></i></a>
@@ -689,28 +839,32 @@
     <script>
         // Server IP copy functionality
         const serverIp = document.querySelector('.server-ip');
-        serverIp.addEventListener('click', function() {
-            const text = 'hamletsmp.net';
-            navigator.clipboard.writeText(text).then(() => {
-                const originalText = this.innerHTML;
-                this.innerHTML = '<i class="fas fa-check"></i> Copied to clipboard!';
-                this.style.backgroundColor = 'var(--purple)';
-                
-                setTimeout(() => {
-                    this.innerHTML = originalText;
-                    this.style.backgroundColor = '';
-                }, 2000);
+        if (serverIp) {
+            serverIp.addEventListener('click', function() {
+                const text = 'hamletsmp.net';
+                navigator.clipboard.writeText(text).then(() => {
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '<i class="fas fa-check"></i> Copied to clipboard!';
+                    this.style.backgroundColor = 'var(--purple)';
+                    
+                    setTimeout(() => {
+                        this.innerHTML = originalText;
+                        this.style.backgroundColor = '';
+                    }, 2000);
+                });
             });
-        });
+        }
         
         // Status dot animation
         const statusDot = document.querySelector('.status-dot');
-        setInterval(() => {
-            statusDot.style.backgroundColor = 
-                statusDot.style.backgroundColor === '#ffdd00' ? '#ff6b6b' : '#ffdd00';
-            statusDot.style.boxShadow = 
-                statusDot.style.boxShadow === '0 0 10px #ffdd00' ? '0 0 10px #ff6b6b' : '0 0 10px #ffdd00';
-        }, 3000);
+        if (statusDot) {
+            setInterval(() => {
+                statusDot.style.backgroundColor = 
+                    statusDot.style.backgroundColor === '#ffdd00' ? '#ff6b6b' : '#ffdd00';
+                statusDot.style.boxShadow = 
+                    statusDot.style.boxShadow === '0 0 10px #ffdd00' ? '0 0 10px #ff6b6b' : '0 0 10px #ffdd00';
+            }, 3000);
+        }
         
         // Button hover effects
         document.querySelectorAll('.mc-button, .dev-application-button').forEach(button => {
@@ -725,10 +879,23 @@
         
         // Warning banner animation
         const warningBanner = document.querySelector('.warning-banner');
-        setInterval(() => {
-            warningBanner.style.boxShadow = 
-                warningBanner.style.boxShadow === '0 0 15px #ff6b6b' ? '0 0 20px #ff8e8e' : '0 0 15px #ff6b6b';
-        }, 1000);
+        if (warningBanner) {
+            setInterval(() => {
+                warningBanner.style.boxShadow = 
+                    warningBanner.style.boxShadow === '0 0 15px #ff6b6b' ? '0 0 20px #ff8e8e' : '0 0 15px #ff6b6b';
+            }, 1000);
+        }
+        
+        // Highlight current page in navigation
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        document.querySelectorAll('nav a').forEach(link => {
+            const linkPage = link.getAttribute('href');
+            if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
     </script>
 </body>
 </html>
