@@ -651,34 +651,13 @@
                 <p><i class="fas fa-exclamation-circle"></i> <strong>Note:</strong> This application form is for team positions only. The server is not yet open to public players.</p>
             </div>
             
-            <div class="content-box pink">
-                <h2><i class="fas fa-briefcase"></i> Open Positions</h2>
-                <div class="positions-grid">
-                    <div class="position-card">
-                        <h3><i class="fas fa-code"></i> Java Developer</h3>
-                        <p>Develop custom plugins and server systems. Requires Java/Spigot/Paper experience.</p>
-                    </div>
-                    <div class="position-card">
-                        <h3><i class="fas fa-paint-brush"></i> Builder</h3>
-                        <p>Design spawn areas, custom structures, and world features. Creative skills required.</p>
-                    </div>
-                    <div class="position-card">
-                        <h3><i class="fas fa-shield-alt"></i> Moderator</h3>
-                        <p>Help manage the community and ensure positive player experience. Previous moderation experience preferred.</p>
-                    </div>
-                    <div class="position-card">
-                        <h3><i class="fas fa-comments"></i> Community Manager</h3>
-                        <p>Manage Discord, social media, and community engagement. Communication skills essential.</p>
-                    </div>
-                </div>
-            </div>
-            
+            <!-- APPLICATION FORM (NOW FIRST) -->
             <div class="content-box">
                 <h2><i class="fas fa-file-signature"></i> Application Form</h2>
                 
                 <form action="https://formsubmit.co/hamletsmpapplication@gmail.com" method="POST">
                     <input type="hidden" name="_subject" value="New Hamlet SMP Application">
-                    <inpuDot type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_template" value="table">
                     <input type="hidden" name="_captcha" value="false">
                     <div class="form-row">
                         <div class="form-group">
@@ -750,6 +729,29 @@
                 </form>
             </div>
             
+            <!-- OPEN POSITIONS (NOW SECOND) -->
+            <div class="content-box pink">
+                <h2><i class="fas fa-briefcase"></i> Open Positions</h2>
+                <div class="positions-grid">
+                    <div class="position-card">
+                        <h3><i class="fas fa-code"></i> Java Developer</h3>
+                        <p>Develop custom plugins and server systems. Requires Java/Spigot/Paper experience.</p>
+                    </div>
+                    <div class="position-card">
+                        <h3><i class="fas fa-paint-brush"></i> Builder</h3>
+                        <p>Design spawn areas, custom structures, and world features. Creative skills required.</p>
+                    </div>
+                    <div class="position-card">
+                        <h3><i class="fas fa-shield-alt"></i> Moderator</h3>
+                        <p>Help manage the community and ensure positive player experience. Previous moderation experience preferred.</p>
+                    </div>
+                    <div class="position-card">
+                        <h3><i class="fas fa-comments"></i> Community Manager</h3>
+                        <p>Manage Discord, social media, and community engagement. Communication skills essential.</p>
+                    </div>
+                </div>
+            </div>
+            
             <div class="content-box pink" style="text-align: center;">
                 <h2><i class="fas fa-question-circle"></i> Need Help?</h2>
                 <p>Join our Discord server for questions about applications or to learn more about the project:</p>
@@ -780,78 +782,76 @@
     </div>
     
     <script>
-      <script>
-    // Server IP copy functionality
-    const serverIp = document.querySelector('.server-ip');
-    if (serverIp) {
-        serverIp.addEventListener('click', function() {
-            const text = 'hamletsmp.net';
-            navigator.clipboard.writeText(text).then(() => {
-                const originalText = this.innerHTML;
-                this.innerHTML = '<i class="fas fa-check"></i> Copied to clipboard!';
-                this.style.backgroundColor = 'var(--purple)';
-                
-                setTimeout(() => {
-                    this.innerHTML = originalText;
-                    this.style.backgroundColor = '';
-                }, 2000);
+        // Server IP copy functionality
+        const serverIp = document.querySelector('.server-ip');
+        if (serverIp) {
+            serverIp.addEventListener('click', function() {
+                const text = 'hamletsmp.net';
+                navigator.clipboard.writeText(text).then(() => {
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '<i class="fas fa-check"></i> Copied to clipboard!';
+                    this.style.backgroundColor = 'var(--purple)';
+                    
+                    setTimeout(() => {
+                        this.innerHTML = originalText;
+                        this.style.backgroundColor = '';
+                    }, 2000);
+                });
+            });
+        }
+        
+        // Status dot animation
+        const statusDot = document.querySelector('.status-dot');
+        if (statusDot) {
+            setInterval(() => {
+                statusDot.style.backgroundColor = 
+                    statusDot.style.backgroundColor === '#ffdd00' ? '#ff6b6b' : '#ffdd00';
+                statusDot.style.boxShadow = 
+                    statusDot.style.boxShadow === '0 0 10px #ffdd00' ? '0 0 10px #ff6b6b' : '0 0 10px #ffdd00';
+            }, 3000);
+        }
+        
+        // Button hover effects
+        document.querySelectorAll('.mc-button, .dev-application-button, .submit-button').forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
             });
         });
-    }
-    
-    // Status dot animation
-    const statusDot = document.querySelector('.status-dot');
-    if (statusDot) {
-        setInterval(() => {
-            statusDot.style.backgroundColor = 
-                statusDot.style.backgroundColor === '#ffdd00' ? '#ff6b6b' : '#ffdd00';
-            statusDot.style.boxShadow = 
-                statusDot.style.boxShadow === '0 0 10px #ffdd00' ? '0 0 10px #ff6b6b' : '0 0 10px #ffdd00';
-        }, 3000);
-    }
-    
-    // Button hover effects
-    document.querySelectorAll('.mc-button, .dev-application-button, .submit-button').forEach(button => {
-        button.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-5px)';
-        });
         
-        button.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-        });
-    });
-    
-    // Warning banner animation
-    const warningBanner = document.querySelector('.warning-banner');
-    if (warningBanner) {
-        setInterval(() => {
-            warningBanner.style.boxShadow = 
-                warningBanner.style.boxShadow === '0 0 15px #ff6b6b' ? '0 0 20px #ff8e8e' : '0 0 15px #ff6b6b';
-        }, 1000);
-    }
-    
-
-    // Highlight current page in navigation
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('nav a').forEach(link => {
-        const linkPage = link.getAttribute('href');
-        if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
+        // Warning banner animation
+        const warningBanner = document.querySelector('.warning-banner');
+        if (warningBanner) {
+            setInterval(() => {
+                warningBanner.style.boxShadow = 
+                    warningBanner.style.boxShadow === '0 0 15px #ff6b6b' ? '0 0 20px #ff8e8e' : '0 0 15px #ff6b6b';
+            }, 1000);
         }
-    });
-    
-    // Add some interactivity to form inputs
-    document.querySelectorAll('input, textarea, select').forEach(element => {
-        element.addEventListener('focus', function() {
-            this.style.boxShadow = '0 0 15px rgba(232, 67, 147, 0.4)';
+
+        // Highlight current page in navigation
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        document.querySelectorAll('nav a').forEach(link => {
+            const linkPage = link.getAttribute('href');
+            if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
         });
         
-        element.addEventListener('blur', function() {
-            this.style.boxShadow = 'none';
+        // Add some interactivity to form inputs
+        document.querySelectorAll('input, textarea, select').forEach(element => {
+            element.addEventListener('focus', function() {
+                this.style.boxShadow = '0 0 15px rgba(232, 67, 147, 0.4)';
+            });
+            
+            element.addEventListener('blur', function() {
+                this.style.boxShadow = 'none';
+            });
         });
-    });
-</script>
+    </script>
 </body>
 </html>
