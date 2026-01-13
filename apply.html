@@ -827,21 +827,249 @@
         }
         
         // Form submission
-        const applicationForm = document.getElementById('applicationForm');
-        if (applicationForm) {
-            applicationForm.addEventListener('submit', function(e) {
-                e.preventDefault();
+       <!-- Replace the existing form submission script section with this: -->
+
+<script>
+    // SendGrid API Configuration
+    const SENDGRID_API_URL = 'https://api.sendgrid.com/v3/mail/send';
+    const SENDGRID_API_KEY = 'YOUR_SENDGRID_API_KEY_HERE'; // Replace with your actual SendGrid API key
+    const ADMIN_EMAIL = 'your-admin@email.com'; // Replace with admin email to receive applications
+    const FROM_EMAIL = 'noreply@hamletsmp.net'; // Replace with your sender email
+    
+    // Form submission
+    const applicationForm = document.getElementById('applicationForm');
+    if (applicationForm) {
+        applicationForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simple validation
+            if (!data.fullName || !data.discord || !data.position || !data.email) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            // Show loading state
+            const submitBtn = this.querySelector('.submit-button');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            submitBtn.disabled = true;
+            
+            try {
+                // Prepare email content
+                const emailHtml = `
+                    <h2>New Hamlet SMP Application</h2>
+                    <p><strong>Applicant:</strong> ${data.fullName}</p>
+                    <p><strong>Discord:</strong> ${data.discord}</p>
+                    <p><strong>Email:</strong> ${data.email}</p>
+                    <p><strong>Position:</strong> ${data.position}</p>
+                    <p><strong>Availability:</strong> ${data.availability} hours/week</p>
+                    <p><strong>Timezone:</strong> ${data.timezone}</p>
+                    <hr>
+                    <h3>Experience:</h3>
+                    <p>${data.experience.replace(/\n/g, '<br>')}</p>
+                    <hr>
+                    <h3>Why Hamlet SMP:</h3>
+                    <p>${data.why.replace(/\n/g, '<br>')}</p>
+                    <hr>
+                    <h3>Portfolio Links:</h3>
+                    <p>${data.portfolio || 'Not provided'}</p>
+                    <hr>
+                    <p><em>Submitted: ${new Date().toLocaleString()}</em></p>
+                `;
                 
-                // Get form data
-                const formData = new FormData(this);
-                const data = Object.fromEntries(formData);
+                // Prepare SendGrid API request
+                const sendGridData = {
+                    personalizations: [{
+                        to: [{ email: ADMIN_EMAIL }],
+                        subject: `New Application: ${data.fullName} - ${data.position}`
+                    }],
+                    from: { email: FROM_EMAIL, name: "Hamlet SMP Application Bot" },
+                    content: [
+                        {
+                            type: "text/html",
+                            value: emailHtml
+                        }
+                    ]
+                };
                 
-                // Simple validation
-                if (!data.fullName || !data.discord || !data.position) {
-                    alert('Please fill in all required fields');
-                    return;
+                // Send to SendGrid
+                const response = await fetch(SENDGRID_API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${SENDGRID_API_KEY}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(sendGridData)
+                });
+                
+                if (response.ok) {
+                    // Also send confirmation to applicant
+                    await sendConfirmationEmail(data.email, data.fullName);
+                    
+                    // Show success message
+                    alert('Application submitted successfully!\n\n' +
+                          'A confirmation email has been sent to your inbox.\n' +
+                          'We will review your application and contact you via Discord within 3-5 business days.\n\n' +
+                          'Thank you for applying to Hamlet SMP!');
+                    
+                    // Reset form
+                    this.reset();
+                    
+                } else {
+                    const errorText = await response.text();
+                    throw new Error(`SendGrid API Error: ${response.status} - ${errorText}`);
                 }
                 
+            } catch (error) {
+                console.error('Submission error:', error);
+                
+                // For development/testing without API key
+                if (SENDGRID_API_KEY === 'YOUR_SENDGRID_API_KEY_HERE') {
+                    alert('⚠️ DEVELOPMENT MODE: Application would be sent via SendGrid\n\n' +
+                          'Set up SendGrid API key in the script to enable email submissions.\n\n' +
+                          'Application Details:\n' +
+                          `Name: ${data.fullName}\n` +
+                          `Discord: ${data.discord}\n` +
+                          `Position: ${data.position}\n\n` +
+                          'Thank you for applying!');
+                    this.reset();
+                } else {
+                    alert('Error submitting application. Please try again later or contact us on Discord.\n\nError: ' + error.message);
+                }
+                
+            } finally {
+                // Restore button state
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            }
+        });
+    }
+    
+    // Send confirmation email to applicant
+    async function sendConfirmationEmail(toEmail, applicantName) {
+        try {
+            const confirmationHtml = `
+                <h2>Application Received - Hamlet SMP</h2>
+                <p>Dear ${applicantName},</p>
+                <p>Thank you for submitting your application to join the Hamlet SMP development team!</p>
+                <p>We have received your application and will review it within 3-5 business days.</p>
+                <p>If selected for the next stage, we will contact you via the Discord username you provided.</p>
+                <hr>
+                <p><strong>Next Steps:</strong></p>
+                <ol>
+                    <li>Ensure your Discord username is correct and you have DMs enabled</li>
+                    <li>Join our Discord server if you haven't already: https://discord.gg/kmKnDs6WUF</li>
+                    <li>Watch for a friend request or message from our team</li>
+                </ol>
+                <hr>
+                <p>Best regards,<br>The Hamlet SMP Team</p>
+                <p><em>This is an automated message. Please do not reply to this email.</em></p>
+            `;
+            
+            const confirmationData = {
+                personalizations: [{
+                    to: [{ email: toEmail }],
+                    subject: "Your Hamlet SMP Application Has Been Received"
+                }],
+                from: { email: FROM_EMAIL, name: "Hamlet SMP Team" },
+                content: [
+                    {
+                        type: "text/html",
+                        value: confirmationHtml
+                    }
+                ]
+            };
+            
+            await fetch(SENDGRID_API_URL, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${SENDGRID_API_KEY}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(confirmationData)
+            });
+            
+        } catch (error) {
+            console.warn('Could not send confirmation email:', error);
+        }
+    }
+    
+    // The rest of your existing scripts remain the same below...
+    // Server IP copy functionality - EXACT SAME AS INDEX.HTML
+    const serverIp = document.querySelector('.server-ip');
+    if (serverIp) {
+        serverIp.addEventListener('click', function() {
+            const text = 'hamletsmp.net';
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-check"></i> Copied to clipboard!';
+                this.style.backgroundColor = 'var(--purple)';
+                
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.style.backgroundColor = '';
+                }, 2000);
+            });
+        });
+    }
+    
+    // Status dot animation - EXACT SAME AS INDEX.HTML
+    const statusDot = document.querySelector('.status-dot');
+    if (statusDot) {
+        setInterval(() => {
+            statusDot.style.backgroundColor = 
+                statusDot.style.backgroundColor === '#ffdd00' ? '#ff6b6b' : '#ffdd00';
+            statusDot.style.boxShadow = 
+                statusDot.style.boxShadow === '0 0 10px #ffdd00' ? '0 0 10px #ff6b6b' : '0 0 10px #ffdd00';
+        }, 3000);
+    }
+    
+    // Button hover effects - EXACT SAME AS INDEX.HTML
+    document.querySelectorAll('.mc-button, .dev-application-button, .submit-button').forEach(button => {
+        button.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px)';
+        });
+        
+        button.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+    
+    // Warning banner animation - EXACT SAME AS INDEX.HTML
+    const warningBanner = document.querySelector('.warning-banner');
+    if (warningBanner) {
+        setInterval(() => {
+            warningBanner.style.boxShadow = 
+                warningBanner.style.boxShadow === '0 0 15px #ff6b6b' ? '0 0 20px #ff8e8e' : '0 0 15px #ff6b6b';
+        }, 1000);
+    }
+    
+    // Highlight current page in navigation - EXACT SAME AS INDEX.HTML
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('nav a').forEach(link => {
+        const linkPage = link.getAttribute('href');
+        if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+    
+    // Add some interactivity to form inputs
+    document.querySelectorAll('input, textarea, select').forEach(element => {
+        element.addEventListener('focus', function() {
+            this.style.boxShadow = '0 0 15px rgba(232, 67, 147, 0.4)';
+        });
+        
+        element.addEventListener('blur', function() {
+            this.style.boxShadow = 'none';
+        });
+    });
+</script>
                 // Show success message
                 alert('Application submitted successfully!\n\n' +
                       'We will review your application and contact you via Discord within 3-5 business days.\n\n' +
