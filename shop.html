@@ -15,7 +15,7 @@
     <meta name="description" content="Official store for Hamlet SMP - Purchase ranks, cosmetics, and more">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* BASE STYLES - COPY FROM YOUR index.html */
+        /* COPY ALL THE SAME STYLES FROM YOUR index.html FILE - EXACTLY THE SAME */
         :root {
             --purple-dark: #6a0dad;
             --purple: #9b59b6;
@@ -210,6 +210,20 @@
             color: var(--pink-light);
         }
         
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            padding: 40px;
+        }
+        
+        @media (max-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
         /* Content Boxes */
         .content-box {
             background: linear-gradient(145deg, var(--gray-dark), var(--black));
@@ -249,20 +263,6 @@
             border-bottom-color: var(--pink);
         }
         
-        /* Full width pages */
-        .full-width {
-            padding: 40px;
-        }
-        
-        .page-title {
-            text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 3px solid var(--pink);
-            font-size: 2.5rem;
-            color: var(--pink-light);
-        }
-        
         /* Server Status */
         .server-status {
             display: flex;
@@ -294,6 +294,49 @@
             0% { transform: scale(1); opacity: 1; }
             50% { transform: scale(1.2); opacity: 0.7; }
             100% { transform: scale(1); opacity: 1; }
+        }
+        
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .feature {
+            background: linear-gradient(145deg, rgba(155, 89, 182, 0.2), rgba(232, 67, 147, 0.2));
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--pink);
+            transition: transform 0.3s ease;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature h3 {
+            color: var(--pink-light);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* Developer Recruit Box */
+        .dev-recruit {
+            background: linear-gradient(145deg, rgba(255, 107, 107, 0.2), rgba(255, 142, 142, 0.2));
+            border-left: 4px solid #ff6b6b;
+            border: 2px solid #ff6b6b;
+        }
+        
+        .dev-recruit h3 {
+            color: #ffcccc;
         }
         
         /* Buttons */
@@ -341,6 +384,72 @@
         
         .mc-button:active {
             transform: translateY(-2px);
+        }
+        
+        .mc-button.discord {
+            background: linear-gradient(135deg, #7289da 0%, #5a6fc1 100%);
+            border-color: #99aab5;
+        }
+        
+        /* Developer Application Button */
+        .dev-application-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid #ffcccc;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+        
+        .dev-application-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s ease;
+        }
+        
+        .dev-application-button:hover::before {
+            left: 100%;
+        }
+        
+        .dev-application-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.6);
+        }
+        
+        .dev-application-button:active {
+            transform: translateY(-2px);
+        }
+        
+        /* Coming Soon Badge */
+        .coming-soon {
+            display: inline-block;
+            background: linear-gradient(90deg, #ff6b6b, #ff8e8e);
+            color: #2d0000;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 10px;
+            vertical-align: middle;
         }
         
         /* Footer */
@@ -414,224 +523,73 @@
                 border-bottom: 1px solid var(--gray);
             }
             
-            .full-width {
+            .main-content {
                 padding: 20px;
             }
-            
-            .page-title {
-                font-size: 2rem;
-            }
         }
         
-        /* SHOP-SPECIFIC STYLES */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-        
-        .product-card {
-            background: linear-gradient(145deg, rgba(155, 89, 182, 0.1), rgba(232, 67, 147, 0.1));
-            border: 2px solid var(--purple);
+        /* Progress Banner */
+        .progress-banner {
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            color: #003300;
+            padding: 30px;
             border-radius: 10px;
-            padding: 25px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .product-card.featured {
-            border-color: var(--pink);
-            background: linear-gradient(145deg, rgba(155, 89, 182, 0.2), rgba(232, 67, 147, 0.2));
-        }
-        
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(232, 67, 147, 0.2);
-        }
-        
-        .product-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
-            color: #2d0000;
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-        
-        .product-icon {
-            font-size: 3rem;
-            color: var(--pink);
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .product-title {
-            color: var(--pink-light);
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        
-        .product-price {
-            color: var(--purple-light);
-            font-size: 1.8rem;
-            font-weight: bold;
-            margin: 15px 0;
-            text-align: center;
-        }
-        
-        .product-features {
-            list-style: none;
             margin: 20px 0;
-        }
-        
-        .product-features li {
-            padding: 8px 0;
-            color: var(--gray-light);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .product-features li i {
-            color: var(--pink);
-            font-size: 0.9rem;
-        }
-        
-        .buy-button {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, var(--purple) 0%, var(--pink) 100%);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-            margin-top: 20px;
-        }
-        
-        .buy-button:hover {
-            background: linear-gradient(135deg, var(--pink) 0%, var(--purple) 100%);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(232, 67, 147, 0.4);
-        }
-        
-        .category-filter {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 30px;
-            justify-content: center;
-        }
-        
-        .category-btn {
-            padding: 10px 20px;
-            background: var(--gray-dark);
-            border: 2px solid var(--purple);
-            border-radius: 20px;
-            color: var(--white);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .category-btn.active, .category-btn:hover {
-            background: linear-gradient(135deg, var(--purple) 0%, var(--pink) 100%);
-        }
-        
-        .cart-summary {
-            background: linear-gradient(145deg, rgba(155, 89, 182, 0.1), rgba(232, 67, 147, 0.1));
-            padding: 25px;
-            border-radius: 10px;
-            border: 2px solid var(--purple);
-            margin-top: 30px;
-        }
-        
-        .payment-methods {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .payment-method {
-            font-size: 2rem;
-            color: var(--purple-light);
-            padding: 10px;
-        }
-        
-        .store-notice {
-            background: linear-gradient(90deg, rgba(255, 193, 7, 0.2), rgba(255, 235, 59, 0.2));
-            border: 2px solid #ffc107;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 20px 0;
-            text-align: center;
-        }
-        
-        .feature {
-            background: linear-gradient(145deg, rgba(155, 89, 182, 0.2), rgba(232, 67, 147, 0.2));
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid var(--pink);
-            transition: transform 0.3s ease;
-            min-height: 180px;
+            border: 3px solid #2E7D32;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-        
-        .feature h3 {
-            color: var(--pink-light);
-            margin-bottom: 10px;
-            display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
+            text-align: center;
+            min-height: 300px;
+            grid-column: 1 / -1; /* Span both columns */
         }
         
-        .cart-total {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--pink-light);
-            margin-top: 15px;
-            text-align: right;
+        .progress-banner i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: #2E7D32;
+        }
+        
+        .progress-banner h2 {
+            font-size: 2.5rem;
+            color: #003300;
+            margin-bottom: 15px;
+        }
+        
+        .progress-banner p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            color: #1B5E20;
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- HEADER - EXACTLY THE SAME AS INDEX.HTML -->
         <header>
             <h1 class="floating">HAMLET SMP</h1>
-            <p class="tagline">Official Server Store - Support Development & Get Rewards</p>
+            <p class="tagline">Official Server Store - Coming Soon!</p>
             
             <div class="warning-banner">
                 <i class="fas fa-exclamation-triangle"></i>
-                <span>STORE IS IN BETA - All purchases directly support server development</span>
+                <span>STORE IS UNDER CONSTRUCTION - CHECK BACK SOON!</span>
             </div>
             
             <div class="server-ip">
-                <i class="fas fa-shopping-cart"></i> Official Store
+                <i class="fas fa-shopping-cart"></i> Store Coming Soon
             </div>
             
             <div class="server-status">
                 <div class="status-indicator">
                     <div class="status-dot"></div>
-                    <span><i class="fas fa-store"></i> Store Status: OPEN</span>
+                    <span><i class="fas fa-wrench"></i> Store Status: UNDER CONSTRUCTION</span>
                 </div>
-                <div><i class="fas fa-shield-alt"></i> Secure Payments</div>
+                <div><i class="fas fa-clock"></i> Estimated Launch: Q1 2026</div>
             </div>
         </header>
         
+        <!-- NAVIGATION - Only change is Shop link active -->
         <nav>
             <ul>
                 <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
@@ -642,207 +600,27 @@
             </ul>
         </nav>
         
-        <!-- SHOP PAGE CONTENT -->
-        <div class="full-width">
-            <h1 class="page-title"><i class="fas fa-store"></i> Hamlet SMP Store</h1>
-            
-            <div class="content-box pink">
-                <h2><i class="fas fa-gift"></i> Support Development</h2>
-                <p>Every purchase directly funds the development of Hamlet SMP. Get exclusive perks while helping us build an amazing server experience!</p>
-                
-                <div class="store-notice">
-                    <i class="fas fa-info-circle"></i> All purchases are one-time payments. No subscriptions or hidden fees.
-                </div>
-                
-                <div class="category-filter">
-                    <button class="category-btn active" data-category="all">All Products</button>
-                    <button class="category-btn" data-category="ranks">Server Ranks</button>
-                    <button class="category-btn" data-category="cosmetics">Cosmetics</button>
-                    <button class="category-btn" data-category="currency">Server Currency</button>
-                </div>
+        <!-- MAIN CONTENT - Only the progress banner -->
+        <div class="main-content">
+            <div class="progress-banner">
+                <i class="fas fa-tools"></i>
+                <h2>Shop is still in progress!</h2>
+                <p>We're working hard to bring you an amazing store experience. Check back soon for ranks, cosmetics, and more!</p>
+                <p style="margin-top: 20px; font-style: italic;">Expected launch: Early 2026</p>
             </div>
             
-            <div class="products-grid">
-                <!-- Founder Rank -->
-                <div class="product-card featured" data-category="ranks">
-                    <div class="product-badge">BEST VALUE</div>
-                    <div class="product-icon">
-                        <i class="fas fa-crown"></i>
-                    </div>
-                    <h3 class="product-title">Founder Rank</h3>
-                    <div class="product-price">$24.99</div>
-                    <ul class="product-features">
-                        <li><i class="fas fa-check"></i> Permanent "Founder" title</li>
-                        <li><i class="fas fa-check"></i> Early access to all updates</li>
-                        <li><i class="fas fa-check"></i> Exclusive founder cosmetics</li>
-                        <li><i class="fas fa-check"></i> Reserved server slot</li>
-                        <li><i class="fas fa-check"></i> Access to beta features</li>
-                        <li><i class="fas fa-check"></i> Special Discord role</li>
-                    </ul>
-                    <button class="buy-button" onclick="addToCart('Founder Rank', 24.99)">
-                        <i class="fas fa-shopping-cart"></i> Purchase Now
-                    </button>
-                </div>
-                
-                <!-- VIP Rank -->
-                <div class="product-card" data-category="ranks">
-                    <div class="product-icon">
-                        <i class="fas fa-gem"></i>
-                    </div>
-                    <h3 class="product-title">VIP Rank</h3>
-                    <div class="product-price">$14.99</div>
-                    <ul class="product-features">
-                        <li><i class="fas fa-check"></i> VIP title and prefix</li>
-                        <li><i class="fas fa-check"></i> Access to /fly command</li>
-                        <li><i class="fas fa-check"></i> 3 additional homes</li>
-                        <li><i class="fas fa-check"></i> Colored chat & nicknames</li>
-                        <li><i class="fas fa-check"></i> Priority support</li>
-                        <li><i class="fas fa-check"></i> Voting rewards multiplier</li>
-                    </ul>
-                    <button class="buy-button" onclick="addToCart('VIP Rank', 14.99)">
-                        <i class="fas fa-shopping-cart"></i> Purchase Now
-                    </button>
-                </div>
-                
-                <!-- Premium Cosmetics Pack -->
-                <div class="product-card" data-category="cosmetics">
-                    <div class="product-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3 class="product-title">Cosmetic Pack</h3>
-                    <div class="product-price">$9.99</div>
-                    <ul class="product-features">
-                        <li><i class="fas fa-check"></i> 15 exclusive particle effects</li>
-                        <li><i class="fas fa-check"></i> 10 unique pet skins</li>
-                        <li><i class="fas fa-check"></i> Custom join/leave messages</li>
-                        <li><i class="fas fa-check"></i> Animated name tags</li>
-                        <li><i class="fas fa-check"></i> Special trail effects</li>
-                        <li><i class="fas fa-check"></i> Holiday cosmetics included</li>
-                    </ul>
-                    <button class="buy-button" onclick="addToCart('Cosmetic Pack', 9.99)">
-                        <i class="fas fa-shopping-cart"></i> Purchase Now
-                    </button>
-                </div>
-                
-                <!-- Server Currency -->
-                <div class="product-card" data-category="currency">
-                    <div class="product-badge">POPULAR</div>
-                    <div class="product-icon">
-                        <i class="fas fa-coins"></i>
-                    </div>
-                    <h3 class="product-title">5,000 Coins</h3>
-                    <div class="product-price">$4.99</div>
-                    <ul class="product-features">
-                        <li><i class="fas fa-check"></i> 5,000 in-game coins</li>
-                        <li><i class="fas fa-check"></i> Use in server shop</li>
-                        <li><i class="fas fa-check"></i> Buy exclusive items</li>
-                        <li><i class="fas fa-check"></i> Trade with other players</li>
-                        <li><i class="fas fa-check"></i> No expiration</li>
-                        <li><i class="fas fa-check"></i> Instant delivery</li>
-                    </ul>
-                    <button class="buy-button" onclick="addToCart('5,000 Coins', 4.99)">
-                        <i class="fas fa-shopping-cart"></i> Purchase Now
-                    </button>
-                </div>
-                
-                <!-- Server Booster -->
-                <div class="product-card" data-category="currency">
-                    <div class="product-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3 class="product-title">Server Booster</h3>
-                    <div class="product-price">$19.99</div>
-                    <ul class="product-features">
-                        <li><i class="fas fa-check"></i> Boosts server for 30 days</li>
-                        <li><i class="fas fa-check"></i> Your name in /boosters</li>
-                        <li><i class="fas fa-check"></i> Special booster cosmetics</li>
-                        <li><i class="fas fa-check"></i> Increased voting rewards</li>
-                        <li><i class="fas fa-check"></i> Booster Discord role</li>
-                        <li><i class="fas fa-check"></i> Supports server costs</li>
-                    </ul>
-                    <button class="buy-button" onclick="addToCart('Server Booster', 19.99)">
-                        <i class="fas fa-shopping-cart"></i> Purchase Now
-                    </button>
-                </div>
-                
-                <!-- Name Color -->
-                <div class="product-card" data-category="cosmetics">
-                    <div class="product-icon">
-                        <i class="fas fa-paint-brush"></i>
-                    </div>
-                    <h3 class="product-title">Custom Name Color</h3>
-                    <div class="product-price">$2.99</div>
-                    <ul class="product-features">
-                        <li><i class="fas fa-check"></i> Choose any color for name</li>
-                        <li><i class="fas fa-check"></i> Works in chat and tab</li>
-                        <li><i class="fas fa-check"></i> Permanent color change</li>
-                        <li><i class="fas fa-check"></i> Can be changed later</li>
-                        <li><i class="fas fa-check"></i> Unlimited color choices</li>
-                        <li><i class="fas fa-check"></i> Rainbow color option (+$1)</li>
-                    </ul>
-                    <button class="buy-button" onclick="addToCart('Custom Name Color', 2.99)">
-                        <i class="fas fa-shopping-cart"></i> Purchase Now
-                    </button>
-                </div>
+            <!-- Left Column - Empty -->
+            <div class="left-column">
+                <!-- Intentionally left blank -->
             </div>
             
-            <div class="content-box" style="margin-top: 40px;">
-                <h2><i class="fas fa-shopping-cart"></i> Shopping Cart</h2>
-                <div class="cart-summary">
-                    <div id="cartItems">
-                        <p style="text-align: center; color: var(--purple-light);">Your cart is empty</p>
-                    </div>
-                    <div id="cartTotal" class="cart-total" style="display: none;">
-                        Total: $<span id="totalAmount">0.00</span>
-                    </div>
-                    <div style="margin-top: 20px; text-align: center;">
-                        <button class="mc-button" onclick="checkout()" style="width: auto; padding: 15px 40px;">
-                            <i class="fas fa-credit-card"></i> Proceed to Checkout
-                        </button>
-                        <button class="mc-button" onclick="clearCart()" style="width: auto; padding: 15px 40px; background: var(--gray); margin-left: 10px;">
-                            <i class="fas fa-trash"></i> Clear Cart
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="payment-methods">
-                    <div class="payment-method"><i class="fab fa-cc-paypal"></i></div>
-                    <div class="payment-method"><i class="fab fa-cc-stripe"></i></div>
-                    <div class="payment-method"><i class="fab fa-cc-visa"></i></div>
-                    <div class="payment-method"><i class="fab fa-cc-mastercard"></i></div>
-                    <div class="payment-method"><i class="fab fa-cc-amex"></i></div>
-                </div>
-            </div>
-            
-            <div class="content-box pink" style="margin-top: 40px;">
-                <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
-                <div class="feature">
-                    <h3><i class="fas fa-sync-alt"></i> How do I receive my purchase?</h3>
-                    <p>All purchases are delivered instantly upon successful payment. Ranks and cosmetics will appear automatically in-game.</p>
-                </div>
-                <div class="feature">
-                    <h3><i class="fas fa-undo"></i> Can I get a refund?</h3>
-                    <p>Due to the digital nature of our products, we do not offer refunds. Please make sure you want the item before purchasing.</p>
-                </div>
-                <div class="feature">
-                    <h3><i class="fas fa-user-shield"></i> Is my payment secure?</h3>
-                    <p>Yes! We use industry-standard encryption and work with trusted payment processors like PayPal and Stripe.</p>
-                </div>
-                <div class="feature">
-                    <h3><i class="fas fa-clock"></i> How long does delivery take?</h3>
-                    <p>All digital products are delivered instantly. If you don't receive your item within 5 minutes, contact our support team.</p>
-                </div>
-            </div>
-            
-            <div class="content-box" style="margin-top: 40px; text-align: center;">
-                <h2><i class="fas fa-handshake"></i> Need Help?</h2>
-                <p>If you have any questions about purchases or need support, join our Discord server and create a ticket.</p>
-                <a href="https://discord.gg/kmKnDs6WUF" class="mc-button" style="width: auto; margin-top: 20px;">
-                    <i class="fab fa-discord"></i> Join Discord for Support
-                </a>
+            <!-- Right Column - Empty -->
+            <div class="right-column">
+                <!-- Intentionally left blank -->
             </div>
         </div>
         
+        <!-- FOOTER - EXACTLY THE SAME AS INDEX.HTML -->
         <footer>
             <p><i class="fas fa-cube"></i> Hamlet SMP Development Server | hamletsmp.net</p>
             <p>© 2026 Hamlet SMP Development Team. Server currently in Pre-Alpha (0.1) testing phase.</p>
@@ -857,101 +635,6 @@
     </div>
     
     <script>
-        // Shopping cart functionality
-        let cart = [];
-        
-        function addToCart(name, price) {
-            cart.push({ name, price });
-            updateCartDisplay();
-            alert(`Added ${name} to cart!`);
-        }
-        
-        function updateCartDisplay() {
-            const cartItems = document.getElementById('cartItems');
-            const cartTotal = document.getElementById('cartTotal');
-            const totalAmount = document.getElementById('totalAmount');
-            
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<p style="text-align: center; color: var(--purple-light);">Your cart is empty</p>';
-                cartTotal.style.display = 'none';
-                return;
-            }
-            
-            let html = '<h3>Items in Cart:</h3>';
-            let total = 0;
-            
-            cart.forEach((item, index) => {
-                total += item.price;
-                html += `
-                    <div class="cart-item" style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
-                        <span>${item.name}</span>
-                                                <span>$${item.price.toFixed(2)}</span>
-                        <button onclick="removeFromCart(${index})" style="background: none; border: none; color: #ff6b6b; cursor: pointer;">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
-                `;
-            });
-            
-            cartItems.innerHTML = html;
-            totalAmount.textContent = total.toFixed(2);
-            cartTotal.style.display = 'block';
-        }
-        
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCartDisplay();
-        }
-        
-        function clearCart() {
-            if (confirm('Clear your shopping cart?')) {
-                cart = [];
-                updateCartDisplay();
-            }
-        }
-        
-        function checkout() {
-            if (cart.length === 0) {
-                alert('Your cart is empty!');
-                return;
-            }
-            
-            let total = cart.reduce((sum, item) => sum + item.price, 0);
-            alert(`Proceeding to checkout with total: $${total.toFixed(2)}\n\nNote: This is a demo store. In a real implementation, this would redirect to a payment processor.`);
-            
-            // In a real implementation, you would:
-            // 1. Send cart data to your backend
-            // 2. Generate payment link
-            // 3. Redirect to payment processor
-            // 4. Handle successful/failed payments
-            
-            // For demo purposes, just clear the cart
-            cart = [];
-            updateCartDisplay();
-        }
-        
-        // Category filter functionality
-        document.querySelectorAll('.category-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                // Update active button
-                document.querySelectorAll('.category-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                this.classList.add('active');
-                
-                const category = this.dataset.category;
-                const products = document.querySelectorAll('.product-card');
-                
-                products.forEach(product => {
-                    if (category === 'all' || product.dataset.category === category) {
-                        product.style.display = 'block';
-                    } else {
-                        product.style.display = 'none';
-                    }
-                });
-            });
-        });
-        
         // Copy server IP functionality
         const serverIp = document.querySelector('.server-ip');
         if (serverIp) {
@@ -975,14 +658,14 @@
         if (statusDot) {
             setInterval(() => {
                 statusDot.style.backgroundColor = 
-                    statusDot.style.backgroundColor === '#ffdd00' ? '#ff6b6b' : '#ffdd00';
+                    statusDot.style.backgroundColor === '#ffdd00' ? '#4CAF50' : '#ffdd00';
                 statusDot.style.boxShadow = 
-                    statusDot.style.boxShadow === '0 0 10px #ffdd00' ? '0 0 10px #ff6b6b' : '0 0 10px #ffdd00';
+                    statusDot.style.boxShadow === '0 0 10px #ffdd00' ? '0 0 10px #4CAF50' : '0 0 10px #ffdd00';
             }, 3000);
         }
         
         // Button hover effects
-        document.querySelectorAll('.mc-button, .buy-button').forEach(button => {
+        document.querySelectorAll('.mc-button').forEach(button => {
             button.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-5px)';
             });
@@ -1001,6 +684,15 @@
             }, 1000);
         }
         
+        // Progress banner animation
+        const progressBanner = document.querySelector('.progress-banner');
+        if (progressBanner) {
+            setInterval(() => {
+                progressBanner.style.boxShadow = 
+                    progressBanner.style.boxShadow === '0 0 20px #4CAF50' ? '0 0 25px #8BC34A' : '0 0 20px #4CAF50';
+            }, 1500);
+        }
+        
         // Highlight current page in navigation
         const currentPage = window.location.pathname.split('/').pop() || 'index.html';
         document.querySelectorAll('nav a').forEach(link => {
@@ -1011,9 +703,6 @@
                 link.classList.remove('active');
             }
         });
-        
-        // Initialize cart
-        updateCartDisplay();
     </script>
 </body>
 </html>
