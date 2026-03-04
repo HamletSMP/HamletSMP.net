@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamlet SMP | Forum</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #09090b; color: #f4f4f5; }
+        .selection-fuchsia::selection { background-color: rgba(217, 70, 239, 0.3); }
+    </style>
+</head>
+<body class="selection-fuchsia">
+    <nav class="fixed w-full z-50 bg-zinc-950/95 backdrop-blur-xl py-4 shadow-2xl border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3 group cursor-pointer">
+                <span class="text-xl font-black tracking-tighter uppercase italic text-white">HAMLET<span class="text-fuchsia-500">SMP</span></span>
+            </a>
+            <div class="hidden md:flex items-center space-x-10 text-sm font-bold">
+                <a href="index.html" class="text-zinc-200 hover:text-white uppercase tracking-widest text-[10px]">Home</a>
+                <a href="forum.html" class="relative py-2 transition-all uppercase tracking-widest text-[10px] text-fuchsia-400">Forum<span class="absolute bottom-0 left-0 w-full h-0.5 bg-fuchsia-500"></span></a>
+                <a href="shop.html" class="text-zinc-200 hover:text-white uppercase tracking-widest text-[10px]">Shop</a>
+                <a href="apply.html" class="text-zinc-200 hover:text-white uppercase tracking-widest text-[10px]">Apply</a>
+                <a href="about.html" class="text-zinc-200 hover:text-white uppercase tracking-widest text-[10px]">About</a>
+                <a href="https://discord.gg/HKjyRbEksB" target="_blank" class="bg-white text-black hover:bg-fuchsia-500 hover:text-white px-6 py-2.5 rounded-none transition-all duration-300 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest shadow-xl">
+                    <i class="fa-brands fa-discord"></i> Discord
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="pt-40 pb-32 px-6 max-w-7xl mx-auto min-h-screen">
+        <div class="mb-12">
+            <h2 class="text-6xl font-black uppercase tracking-tighter italic">FORUM</h2>
+            <p class="text-zinc-500 text-lg mt-2 font-medium">Official discussions, documentation, and development logs.</p>
+        </div>
+
+        <div class="space-y-12">
+            <div class="bg-zinc-900/20 border border-white/5 rounded-none overflow-hidden shadow-2xl">
+                <div class="bg-zinc-900/80 px-8 py-4 border-b border-white/5 flex items-center justify-between">
+                    <h3 class="text-sm font-black uppercase tracking-[0.2em] text-zinc-400 italic">General</h3>
+                </div>
+
+                <div class="divide-y divide-white/5">
+                    <div class="group flex flex-col md:flex-row items-center gap-6 px-8 py-8 transition-all hover:bg-fuchsia-500/[0.03] cursor-pointer">
+                        <div class="flex items-center gap-6 flex-1 w-full">
+                            <div class="w-12 h-12 rounded-none flex items-center justify-center shrink-0 bg-fuchsia-500/20 text-fuchsia-500 border border-fuchsia-500/20">
+                                <i class="fa-solid fa-book text-xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-white group-hover:text-fuchsia-400 transition-colors">Server Rules</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-16 p-8 rounded-none bg-gradient-to-r from-zinc-900/80 to-transparent border border-white/5 flex items-center gap-8">
+            <div class="w-16 h-16 bg-zinc-800 rounded-none flex items-center justify-center shrink-0 border border-white/10 text-fuchsia-500 text-2xl">
+                <i class="fa-solid fa-clock"></i>
+            </div>
+            <div>
+                <h4 class="text-xl font-black uppercase tracking-tight italic mb-1 text-white">Under Construction</h4>
+                <p class="text-zinc-500 text-sm font-medium leading-relaxed max-w-2xl">
+                    The forum is currently being migrated. Only the <span class="text-fuchsia-500 font-black">Hamlet Manifesto</span> is available for public viewing.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="py-16 px-6 border-t border-white/5 bg-zinc-950">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
+            <div class="text-zinc-700 text-[10px] uppercase font-black tracking-[0.4em] text-center md:text-left leading-loose">Not an official Minecraft product.</div>
+            <div class="flex gap-6">
+                <a href="https://github.com/HamletSMP" target="_blank" class="w-12 h-12 bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-500 hover:border-fuchsia-500 hover:text-fuchsia-500 transition-all hover:scale-110"><i class="fa-brands fa-github text-2xl"></i></a>
+                <a href="https://x.com/HamletSMPnet" target="_blank" class="w-12 h-12 bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-500 hover:border-fuchsia-500 hover:text-fuchsia-500 transition-all hover:scale-110"><i class="fa-brands fa-x-twitter text-2xl"></i></a>
+                <a href="https://discord.gg/HKjyRbEksB" target="_blank" class="w-12 h-12 bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-500 hover:border-fuchsia-500 hover:text-fuchsia-500 transition-all hover:scale-110"><i class="fa-brands fa-discord text-2xl"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
