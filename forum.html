@@ -3,35 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hamlet SMP | Shop</title>
     <link rel="icon" type="image/png" href="favicon.png">
+    <title>Hamlet SMP | Forum</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
+        
         body { 
             font-family: 'Inter', sans-serif; 
             background-color: #09090b; 
             background-image: 
                 linear-gradient(to bottom, rgba(9, 9, 11, 0.85), rgba(9, 9, 11, 0.95)),
-                url('https://cdn.discordapp.com/attachments/1287160061550002198/1478873461467386129/image.png?ex=69a9fbbd&is=69a8aa3d&hm=58dd2c561274001b98e4ce61c4ca2902a0e3e7e2d59275fd7f07736f9e955b7d&');
+                url('https://cdn.discordapp.com/attachments/1287160061550002198/1478852779240980684/image.png?ex=69a9e87a&is=69a896fa&hm=14c8bf3799f5b7848877d9e5ef38f79c3bbb18ff87b13ec118e0403bb5349c6f&');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             color: #f4f4f5; 
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .selection-fuchsia::selection { 
+            background-color: rgba(217, 70, 239, 0.3); 
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        .view-hidden {
+            display: none;
         }
     </style>
 </head>
 <body class="selection-fuchsia">
-    <nav class="fixed w-full z-50 bg-zinc-950/95 backdrop-blur-xl py-4 shadow-2xl border-b border-white/5">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-zinc-950/80 backdrop-blur-xl py-4 shadow-2xl border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-3 group cursor-pointer">
-                <span class="text-xl font-black tracking-tighter uppercase italic text-white">HAMLET<span class="text-fuchsia-500">SMP</span></span>
+            <a href="index.html" onclick="switchView('home'); return false;" class="flex items-center space-x-3 group cursor-pointer">
+                <span class="text-xl font-black tracking-tighter uppercase italic text-white">
+                    HAMLET<span class="text-fuchsia-500">SMP</span>
+                </span>
             </a>
             <div class="hidden md:flex items-center space-x-10 text-sm font-bold">
                 <a href="index.html" class="text-zinc-200 hover:text-white uppercase tracking-widest text-[10px]">Home</a>
-                <a href="forum.html" class="text-zinc-200 hover:text-white uppercase tracking-widest text-[10px]">Forum</a>
-                <a href="shop.html" class="relative py-2 transition-all uppercase tracking-widest text-[10px] text-fuchsia-400">Shop<span class="absolute bottom-0 left-0 w-full h-0.5 bg-fuchsia-500"></span></a>
+                <a href="#" onclick="switchView('home'); return false;" class="relative py-2 transition-all uppercase tracking-widest text-[10px] text-fuchsia-400">
+                    Forum
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-fuchsia-500"></span>
+                </a>
+                <a href="shop.html" class="text-zinc-200 hover:text-white uppercase tracking-widest text-[10px]">Shop</a>
                 <a href="apply.html" class="text-zinc-200 hover:text-white uppercase tracking-widest text-[10px]">Apply</a>
                 <a href="about.html" class="text-zinc-200 hover:text-white uppercase tracking-widest text-[10px]">About</a>
                 <a href="https://discord.gg/yfRJuXpfyk" target="_blank" class="bg-white text-black hover:bg-fuchsia-500 hover:text-white px-6 py-2.5 rounded-none transition-all duration-300 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest shadow-xl">
@@ -41,20 +66,137 @@
         </div>
     </nav>
 
-    <div class="pt-32 pb-24 px-6 flex flex-col items-center justify-center min-h-screen text-center bg-zinc-950 relative overflow-hidden">
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-600/5 rounded-none blur-[150px]"></div>
-      <h2 class="text-6xl font-black uppercase tracking-tighter italic">Shop currently work in progress</h2>
+    <!-- Forum Home View -->
+    <div id="view-home" class="pt-40 pb-32 px-6 max-w-7xl mx-auto min-h-screen fade-in">
+        <div class="mb-12">
+            <h2 class="text-6xl font-black uppercase tracking-tighter italic">FORUM</h2>
+            <p class="text-zinc-300 text-lg mt-2 font-medium">Official discussions, documentation, and development logs.</p>
+        </div>
+
+        <div class="space-y-12">
+            <div class="bg-zinc-950/40 backdrop-blur-md border border-white/10 rounded-none overflow-hidden shadow-2xl">
+                <div class="bg-zinc-900/60 px-8 py-4 border-b border-white/10 flex items-center justify-between">
+                    <h3 class="text-sm font-black uppercase tracking-[0.2em] text-zinc-400 italic">General</h3>
+                </div>
+
+                <div class="divide-y divide-white/5">
+                    <div class="group flex flex-col md:flex-row items-center gap-6 px-8 py-8 transition-all hover:bg-fuchsia-500/[0.05] cursor-pointer" onclick="switchView('rules-thread')">
+                        <div class="flex items-center gap-6 flex-1 w-full">
+                            <div class="w-12 h-12 rounded-none flex items-center justify-center shrink-0 bg-fuchsia-500/20 text-fuchsia-500 border border-fuchsia-500/20">
+                                <i class="fa-solid fa-book text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white group-hover:text-fuchsia-400 transition-colors">Server Rules</h4>
+                                <p class="text-zinc-500 text-[10px] uppercase tracking-widest font-bold mt-1">Fundamental guidelines for the realm.</p>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-zinc-700 group-hover:text-fuchsia-500 group-hover:translate-x-1 transition-all"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Card -->
+        <div class="mt-16 p-8 rounded-none bg-zinc-950/40 backdrop-blur-md border border-white/10 flex items-center gap-8">
+            <div class="w-16 h-16 bg-zinc-800/50 rounded-none flex items-center justify-center shrink-0 border border-white/10 text-fuchsia-500 text-2xl">
+                <i class="fa-solid fa-clock"></i>
+            </div>
+            <div>
+                <h4 class="text-xl font-black uppercase tracking-tight italic mb-1 text-white">Under Construction</h4>
+                <p class="text-zinc-300 text-sm font-medium leading-relaxed max-w-2xl">
+                    The forum is currently being migrated.
+                </p>
+            </div>
+        </div>
     </div>
 
-    <footer class="py-16 px-6 border-t border-white/5 bg-zinc-950">
+    <!-- Rules Thread View -->
+    <div id="view-rules-thread" class="view-hidden pt-40 pb-32 px-6 max-w-4xl mx-auto min-h-screen fade-in">
+        <button onclick="switchView('home')" class="text-zinc-500 hover:text-fuchsia-400 uppercase text-[10px] font-black tracking-widest flex items-center gap-2 mb-8 transition-all">
+            <i class="fa-solid fa-arrow-left"></i> Back to Forum
+        </button>
+
+        <div class="bg-zinc-950/60 backdrop-blur-xl border border-white/10 shadow-2xl p-8 md:p-12 relative">
+            <header class="border-b border-white/5 pb-8 mb-10">
+                <h1 class="text-5xl font-black uppercase italic tracking-tighter text-white mb-4">Server Rules</h1>
+                <div class="flex items-center gap-4">
+                    <img src="https://cdn.discordapp.com/attachments/1287160061550002198/1478860840944800005/image-removebg-preview.png?ex=69a9effc&is=69a89e7c&hm=bca13e490fbbc04d260946de274dc3d62452b0fbe7ea959d63f99b5aa84d790f&" 
+                         class="w-10 h-10 object-contain shrink-0" 
+                         alt="Staff">
+                    <div>
+                        <p class="text-xs font-black uppercase tracking-widest text-white">The Owners</p>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-zinc-500">March 4, 2026 • Announcement</p>
+                    </div>
+                </div>
+            </header>
+
+            <div class="space-y-8 text-zinc-300 leading-relaxed text-lg font-medium">
+                <p class="text-zinc-400 italic border-l-2 border-fuchsia-500/30 pl-6 py-2">Notice: Fully detailed rules thread will be posted when forums are operational.</p>
+                
+                <section class="space-y-6">
+                    <div class="flex gap-4">
+                        <span class="text-fuchsia-500 font-black italic text-2xl">01</span>
+                        <div>
+                            <h3 class="text-white font-black uppercase tracking-tight mb-1">Mutual Respect</h3>
+                            <p class="text-base text-zinc-400">Respect all players. Harassment, hate speech, or excessive toxicity will result in moderation.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <span class="text-fuchsia-500 font-black italic text-2xl">02</span>
+                        <div>
+                            <h3 class="text-white font-black uppercase tracking-tight mb-1">Abuse of Power</h3>
+                            <p class="text-base text-zinc-400">Staff members who abuse their special permissions will be released from duty and moderated.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <span class="text-fuchsia-500 font-black italic text-2xl">03</span>
+                        <div>
+                            <h3 class="text-white font-black uppercase tracking-tight mb-1">Forbidden Arts</h3>
+                            <p class="text-base text-zinc-400">Hacking, X-raying, and exploits are strictly forbidden. Breaking this rule will result in a permanent ban.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <span class="text-fuchsia-500 font-black italic text-2xl">04</span>
+                        <div>
+                            <h3 class="text-white font-black uppercase tracking-tight mb-1">Promoting</h3>
+                            <p class="text-base text-zinc-400">Promoting other servers, games, communities or entities inside the server is prohibited and will result in moderation.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-16 px-6 border-t border-white/10 bg-zinc-950/90 backdrop-blur-md">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
-            <div class="text-zinc-700 text-[10px] uppercase font-black tracking-[0.4em] text-center md:text-left leading-loose">Not an official Minecraft product.</div>
+            <div class="text-zinc-500 text-[10px] uppercase font-black tracking-[0.4em] text-center md:text-left leading-loose">Not an official Minecraft product.</div>
             <div class="flex gap-6">
-                <a href="https://github.com/HamletSMP" target="_blank" class="w-12 h-12 bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-500 hover:border-fuchsia-500 hover:text-fuchsia-500 transition-all hover:scale-110"><i class="fa-brands fa-github text-2xl"></i></a>
-                <a href="https://x.com/HamletSMPnet" target="_blank" class="w-12 h-12 bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-500 hover:border-fuchsia-500 hover:text-fuchsia-500 transition-all hover:scale-110"><i class="fa-brands fa-x-twitter text-2xl"></i></a>
-                <a href="https://discord.gg/HKjyRbEksB" target="_blank" class="w-12 h-12 bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-500 hover:border-fuchsia-500 hover:text-fuchsia-500 transition-all hover:scale-110"><i class="fa-brands fa-discord text-2xl"></i></a>
+                <a href="https://github.com/HamletSMP" target="_blank" class="w-12 h-12 bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-400 hover:border-fuchsia-500 hover:text-fuchsia-500 transition-all hover:scale-110"><i class="fa-brands fa-github text-2xl"></i></a>
+                <a href="https://x.com/HamletSMPnet" target="_blank" class="w-12 h-12 bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-400 hover:border-fuchsia-500 hover:text-fuchsia-500 transition-all hover:scale-110"><i class="fa-brands fa-x-twitter text-2xl"></i></a>
+                <a href="https://discord.gg/HKjyRbEksB" target="_blank" class="w-12 h-12 bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-400 hover:border-fuchsia-500 hover:text-fuchsia-500 transition-all hover:scale-110"><i class="fa-brands fa-discord text-2xl"></i></a>
             </div>
         </div>
     </footer>
+
+    <script>
+        function switchView(viewId) {
+            const home = document.getElementById('view-home');
+            const rules = document.getElementById('view-rules-thread');
+
+            if (viewId === 'home') {
+                home.classList.remove('view-hidden');
+                rules.classList.add('view-hidden');
+                window.scrollTo(0, 0);
+            } else if (viewId === 'rules-thread') {
+                home.classList.add('view-hidden');
+                rules.classList.remove('view-hidden');
+                window.scrollTo(0, 0);
+            }
+        }
+    </script>
 </body>
 </html>
