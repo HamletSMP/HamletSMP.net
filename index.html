@@ -15,6 +15,11 @@
             to { opacity: 1; transform: translateY(0); }
         }
         .animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
+        
+        /* Custom text shadow for maximum legibility without a box */
+        .text-glow {
+            text-shadow: 0 0 30px rgba(0,0,0,1), 0 0 60px rgba(0,0,0,1), 0 10px 20px rgba(0,0,0,1);
+        }
     </style>
 </head>
 <body class="selection-fuchsia">
@@ -29,11 +34,11 @@
                     Home
                     <span class="absolute bottom-0 left-0 w-full h-0.5 bg-fuchsia-500"></span>
                 </a>
-                <a href="forum.html" class="text-zinc-200 hover:text-white uppercase tracking-widest text-[10px]">Forum</a>
-                <a href="shop.html" class="text-zinc-200 hover:text-white uppercase tracking-widest text-[10px]">Shop</a>
-                <a href="apply.html" class="text-zinc-200 hover:text-white uppercase tracking-widest text-[10px]">Apply</a>
-                <a href="about.html" class="text-zinc-200 hover:text-white uppercase tracking-widest text-[10px]">About</a>
-                <a href="https://discord.gg/yfRJuXpfyk" target="_blank" class="bg-white text-black hover:bg-fuchsia-500 hover:text-white px-6 py-2.5 rounded-none transition-all duration-300 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest shadow-xl">
+                <a href="forum.html" class="text-zinc-200 hover:text-white uppercase tracking-widest text-[10px] transition-colors">Forum</a>
+                <a href="shop.html" class="text-zinc-200 hover:text-white uppercase tracking-widest text-[10px] transition-colors">Shop</a>
+                <a href="apply.html" class="text-zinc-200 hover:text-white uppercase tracking-widest text-[10px] transition-colors">Apply</a>
+                <a href="about.html" class="text-zinc-200 hover:text-white uppercase tracking-widest text-[10px] transition-colors">About</a>
+                <a href="https://discord.gg/hamletsmp" target="_blank" class="bg-white text-black hover:bg-fuchsia-500 hover:text-white px-6 py-2.5 rounded-none transition-all duration-300 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest shadow-xl">
                     <i class="fa-brands fa-discord"></i> Discord
                 </a>
             </div>
@@ -75,16 +80,18 @@
                 <h3 class="text-6xl sm:text-[8rem] md:text-[10rem] lg:text-[14rem] font-black leading-[0.8] tracking-tighter uppercase text-white">MULTIPLAYER</h3>
             </div>
             <p class="text-white text-lg md:text-2xl mb-16 max-w-3xl mx-auto font-black leading-relaxed drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">A new type of SMP. Still in development. Looking for developers.</p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-6 px-6">
-                <button onclick="copyIP()" class="group relative w-full sm:w-auto flex items-center justify-between gap-10 bg-zinc-900/50 backdrop-blur-md border border-white/10 text-white px-12 py-7 font-black transition-all hover:scale-105 active:scale-95 shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
-                    <div class="flex flex-col items-start leading-none text-left">
-                        <span class="text-[10px] uppercase tracking-widest opacity-50 mb-1 font-black">Server IP</span>
-                        <span id="ip-text" class="text-2xl tracking-tight uppercase italic">hamletsmp.net</span>
+            
+            <!-- Updated IP Section: No box, but high impact text -->
+            <div class="flex flex-col items-center justify-center gap-2 group cursor-pointer animate-fade-in-up" onclick="copyIP()">
+                <div class="flex flex-col items-center text-glow">
+                    <span class="text-[10px] uppercase tracking-[0.5em] text-fuchsia-500 mb-2 font-black">Server IP</span>
+                    <div class="flex items-center gap-4">
+                        <span id="ip-text" class="text-3xl md:text-5xl tracking-tighter uppercase italic font-black text-white hover:text-fuchsia-400 transition-colors duration-300">hamletsmp.net</span>
+                        <div id="copy-btn" class="text-white opacity-40 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300">
+                            <i class="fa-solid fa-copy text-xl md:text-2xl"></i>
+                        </div>
                     </div>
-                    <div id="copy-btn" class="bg-white text-black p-3 rounded-none group-hover:bg-fuchsia-600 group-hover:text-white transition-all duration-300">
-                        <i class="fa-solid fa-copy text-2xl"></i>
-                    </div>
-                </button>
+                </div>
             </div>
         </div>
     </section>
@@ -93,11 +100,20 @@
     <footer class="py-16 px-6 border-t border-white/5 bg-zinc-950">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
             <div class="text-zinc-700 text-[10px] uppercase font-black tracking-[0.4em] text-center md:text-left leading-loose">
-                Not an official Minecraft product. <br> Not approved by or associated with Mojang or Microsoft.
+                Not an official Minecraft product.
             </div>
             <div class="flex gap-6">
-                <a href="#" class="w-12 h-12 bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-500 hover:border-fuchsia-500 hover:text-fuchsia-500 transition-all hover:scale-110"><i class="fa-brands fa-github text-2xl"></i></a>
-                <a href="https://discord.gg/hamletsmp" class="w-12 h-12 bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-500 hover:border-fuchsia-500 hover:text-fuchsia-500 transition-all hover:scale-110"><i class="fa-brands fa-discord text-2xl"></i></a>
+                <a href="https://github.com/HamletSMP" target="_blank" class="w-12 h-12 bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-500 hover:border-fuchsia-500 hover:text-fuchsia-500 transition-all hover:scale-110" title="GitHub">
+                    <i class="fa-brands fa-github text-2xl"></i>
+                </a>
+                <a href="https://x.com/hamletsmpnet" target="_blank" class="w-12 h-12 bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-500 hover:border-fuchsia-500 hover:text-fuchsia-500 transition-all hover:scale-110" title="Follow on X">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+                    </svg>
+                </a>
+                <a href="https://discord.gg/hamletsmp" target="_blank" class="w-12 h-12 bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-500 hover:border-fuchsia-500 hover:text-fuchsia-500 transition-all hover:scale-110" title="Discord">
+                    <i class="fa-brands fa-discord text-2xl"></i>
+                </a>
             </div>
         </div>
     </footer>
@@ -130,9 +146,9 @@
             document.body.removeChild(el);
             
             const btn = document.getElementById('copy-btn');
-            btn.innerHTML = '<i class="fa-solid fa-check text-2xl"></i>';
+            btn.innerHTML = '<i class="fa-solid fa-check text-xl md:text-2xl text-fuchsia-500"></i>';
             setTimeout(() => {
-                btn.innerHTML = '<i class="fa-solid fa-copy text-2xl"></i>';
+                btn.innerHTML = '<i class="fa-solid fa-copy text-xl md:text-2xl"></i>';
             }, 2000);
         }
     </script>
