@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hamlet SMP | About</title>
+    <title>Hamlet SMP | Apply</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
@@ -13,14 +13,23 @@
             font-family: 'Inter', sans-serif; 
             background-color: #09090b; 
             background-image: 
-                linear-gradient(to bottom, rgba(9, 9, 11, 0.85), rgba(9, 9, 11, 0.95)),
-                url('https://cdn.discordapp.com/attachments/1287160061550002198/1478878712354181140/image.png');
+                linear-gradient(to bottom, rgba(9, 9, 11, 0.65), rgba(9, 9, 11, 0.85)),
+                url('https://cdn.discordapp.com/attachments/1287160061550002198/1478877766362464448/image.png?ex=69a9ffbf&is=69a8ae3f&hm=d815434f391f1246db958427d24fe4709db16c0e97ec6838ce1903033e3025a8&');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             color: #f4f4f5; 
         }
         .selection-fuchsia::selection { background-color: rgba(217, 70, 239, 0.3); }
+        textarea::-webkit-scrollbar { width: 4px; }
+        textarea::-webkit-scrollbar-track { background: transparent; }
+        textarea::-webkit-scrollbar-thumb { background: #d946ef; }
+        select { 
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E"); 
+            background-position: right 1rem center; 
+            background-repeat: no-repeat; 
+            background-size: 1.5em; 
+        }
     </style>
 </head>
 <body class="selection-fuchsia">
@@ -33,8 +42,11 @@
                 <a href="index.html" class="text-zinc-200 hover:text-white uppercase tracking-widest text-[10px]">Home</a>
                 <a href="forum.html" class="text-zinc-200 hover:text-white uppercase tracking-widest text-[10px]">Forum</a>
                 <a href="shop.html" class="text-zinc-200 hover:text-white uppercase tracking-widest text-[10px]">Shop</a>
-                <a href="apply.html" class="text-zinc-200 hover:text-white uppercase tracking-widest text-[10px]">Apply</a>
-                <a href="about.html" class="relative py-2 transition-all uppercase tracking-widest text-[10px] text-fuchsia-400">About<span class="absolute bottom-0 left-0 w-full h-0.5 bg-fuchsia-500"></span></a>
+                <a href="apply.html" class="relative py-2 transition-all uppercase tracking-widest text-[10px] text-fuchsia-400">
+                    Apply
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-fuchsia-500"></span>
+                </a>
+                <a href="about.html" class="text-zinc-200 hover:text-white uppercase tracking-widest text-[10px]">About</a>
                 <a href="https://discord.gg/yfRJuXpfyk" target="_blank" class="bg-white text-black hover:bg-fuchsia-500 hover:text-white px-6 py-2.5 rounded-none transition-all duration-300 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest shadow-xl">
                     <i class="fa-brands fa-discord"></i> Discord
                 </a>
@@ -42,59 +54,94 @@
         </div>
     </nav>
 
-    <div class="pt-48 pb-32 px-6 max-w-4xl mx-auto min-h-screen">
-      <div class="flex flex-col items-center justify-center text-center mb-20">
-        <p class="text-xl md:text-2xl font-medium text-zinc-100 leading-relaxed tracking-tight">
-          Hamlet SMP is not just another Minecraft server - it's a revolution in multiplayer survival gameplay. 
-          We're building a community-driven experience that combines classic SMP elements with innovative custom mechanics.
-        </p>
-      </div>
+    <div class="pt-48 pb-32 px-6 max-w-5xl mx-auto min-h-screen">
+      <div class="mb-20">
+        <h2 class="text-7xl font-black uppercase tracking-tighter mb-10 italic">STAFF APPLICATIONS</h2>
+        
+        <div class="space-y-12 text-zinc-100 font-medium">
+          <div class="bg-zinc-900/40 border border-white/10 p-10 md:p-14 relative shadow-2xl">
+            <h2 class="text-4xl font-black uppercase tracking-tighter mb-10 italic flex items-center gap-4">
+              <i class="fa-solid fa-file-lines text-fuchsia-500"></i> Application Form
+            </h2>
 
-      <!-- Section: What's Different -->
-      <div class="mt-20 space-y-12 border-b border-white/5 pb-20">
-        <div class="text-center">
-            <h3 class="text-3xl font-black uppercase tracking-tighter text-fuchsia-500 mb-6">What's different?</h3>
-            <div class="max-w-2xl mx-auto text-left space-y-6 text-zinc-400 text-lg leading-relaxed">
-                <p>We have fundamentally re-engineered the core survival loop to ensure longevity and fair play. On Hamlet SMP, the traditional meta is shattered:</p>
-                <ul class="space-y-4 border-l border-fuchsia-500/30 pl-6">
-                    <li><span class="text-white font-bold tracking-tight">— Anti-Exploitation:</span> Through advanced server-side rendering, x-raying has been made impossible. You find what you earn.</li>
-                    <li><span class="text-white font-bold tracking-tight">— True Scarcity:</span> Basic resources are harder to locate, making every discovery a significant milestone for your faction.</li>
-                    <li><span class="text-white font-bold tracking-tight">— Beyond Diamonds:</span> Diamonds are no longer the focal point of the endgame. We have shifted the power dynamic to specialized artifacts and rare materials.</li>
-                    <li><span class="text-white font-bold tracking-tight">— Diverse Progression:</span> Explore dozens of new ways to grind, from complex industrial farming to unique skill-based economies that reward dedication over luck.</li>
-                </ul>
-            </div>
-        </div>
-      </div>
+            <form action="https://formsubmit.co/hamletsmpapplication@gmail.com" method="POST" class="space-y-8">
+              <input type="hidden" name="_subject" value="New Hamlet SMP Application">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="false">
 
-      <!-- Simple Roadmap Section -->
-      <div class="mt-20">
-        <div class="text-center">
-            <h3 class="text-3xl font-black uppercase tracking-tighter text-fuchsia-500 mb-10">Roadmap</h3>
-            <div class="max-w-xl mx-auto space-y-8 text-left">
-                <div class="flex items-start gap-6">
-                    <span class="text-fuchsia-500 font-black italic text-xs pt-1 tracking-widest uppercase">Phase 01</span>
-                    <div>
-                        <h4 class="text-white font-bold uppercase tracking-tight mb-1">Pre-Alpha <span class="text-[10px] bg-fuchsia-500 text-black px-2 py-0.5 ml-2 font-black tracking-normal not-italic">CURRENTLY HERE</span></h4>
-                        <p class="text-zinc-500 text-sm">Core engine development, anti-cheat integration, and staff recruitment.</p>
-                    </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                  <label class="flex items-center gap-2 text-xs uppercase font-black tracking-widest text-zinc-400">
+                    <i class="fa-solid fa-user text-fuchsia-500"></i> Full Name *
+                  </label>
+                  <input type="text" name="fullName" required placeholder="Your full name" class="w-full bg-zinc-950/50 border border-white/10 p-4 outline-none focus:border-fuchsia-500 transition-colors text-white placeholder:text-zinc-700">
                 </div>
-                
-                <div class="flex items-start gap-6 opacity-40">
-                    <span class="text-zinc-500 font-black italic text-xs pt-1 tracking-widest uppercase">Phase 02</span>
-                    <div>
-                        <h4 class="text-zinc-300 font-bold uppercase tracking-tight mb-1">Closed Alpha</h4>
-                        <p class="text-zinc-500 text-sm">Stress testing with selected builders and technical testers.</p>
-                    </div>
+                <div class="space-y-3">
+                  <label class="flex items-center gap-2 text-xs uppercase font-black tracking-widest text-zinc-400">
+                    <i class="fa-solid fa-comment text-fuchsia-500"></i> Discord Username *
+                  </label>
+                  <input type="text" name="discord" required placeholder="username#0000" class="w-full bg-zinc-950/50 border border-white/10 p-4 outline-none focus:border-fuchsia-500 transition-colors text-white placeholder:text-zinc-700">
                 </div>
+              </div>
 
-                <div class="flex items-start gap-6 opacity-40">
-                    <span class="text-zinc-500 font-black italic text-xs pt-1 tracking-widest uppercase">Phase 03</span>
-                    <div>
-                        <h4 class="text-zinc-300 font-bold uppercase tracking-tight mb-1">The First Cycle</h4>
-                        <p class="text-zinc-500 text-sm">Public release and the commencement of the global leaderboard.</p>
-                    </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                  <label class="flex items-center gap-2 text-xs uppercase font-black tracking-widest text-zinc-400">
+                    <i class="fa-solid fa-envelope text-fuchsia-500"></i> Email Address *
+                  </label>
+                  <input type="email" name="email" required placeholder="your@email.com" class="w-full bg-zinc-950/50 border border-white/10 p-4 outline-none focus:border-fuchsia-500 transition-colors text-white placeholder:text-zinc-700">
                 </div>
-            </div>
+                <div class="space-y-3">
+                  <label class="flex items-center gap-2 text-xs uppercase font-black tracking-widest text-zinc-400">
+                    <i class="fa-solid fa-briefcase text-fuchsia-500"></i> Position Applying For *
+                  </label>
+                  <select name="position" required class="w-full bg-zinc-950/50 border border-white/10 p-4 outline-none focus:border-fuchsia-500 transition-colors text-white appearance-none">
+                    <option value="" class="bg-zinc-900">Select a position</option>
+                    <option value="java-developer" class="bg-zinc-900">Java Developer</option>
+                    <option value="builder" class="bg-zinc-900">Builder</option>
+                    <option value="moderator" class="bg-zinc-900">Moderator</option>
+                    <option value="community-manager" class="bg-zinc-900">Community Manager</option>
+                    <option value="other" class="bg-zinc-900">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="space-y-3">
+                <label class="flex items-center gap-2 text-xs uppercase font-black tracking-widest text-zinc-400">
+                  <i class="fa-solid fa-wrench text-fuchsia-500"></i> Relevant Experience *
+                </label>
+                <textarea name="experience" required rows="4" placeholder="Tell us about your experience..." class="w-full bg-zinc-950/50 border border-white/10 p-4 outline-none focus:border-fuchsia-500 transition-colors text-white placeholder:text-zinc-700 resize-none"></textarea>
+              </div>
+
+              <div class="space-y-3">
+                <label class="flex items-center gap-2 text-xs uppercase font-black tracking-widest text-zinc-400">
+                  <i class="fa-solid fa-circle-info text-fuchsia-500"></i> Why do you want to join? *
+                </label>
+                <textarea name="why" required rows="4" placeholder="What interests you?" class="w-full bg-zinc-950/50 border border-white/10 p-4 outline-none focus:border-fuchsia-500 transition-colors text-white placeholder:text-zinc-700 resize-none"></textarea>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                  <label class="flex items-center gap-2 text-xs uppercase font-black tracking-widest text-zinc-400">
+                    <i class="fa-solid fa-clock text-fuchsia-500"></i> Weekly Availability (hours) *
+                  </label>
+                  <input type="number" name="availability" required min="1" max="168" placeholder="Hours per week" class="w-full bg-zinc-950/50 border border-white/10 p-4 outline-none focus:border-fuchsia-500 transition-colors text-white placeholder:text-zinc-700">
+                </div>
+                <div class="space-y-3">
+                  <label class="flex items-center gap-2 text-xs uppercase font-black tracking-widest text-zinc-400">
+                    <i class="fa-solid fa-globe text-fuchsia-500"></i> Timezone *
+                  </label>
+                  <input type="text" name="timezone" required placeholder="e.g., UTC-5" class="w-full bg-zinc-950/50 border border-white/10 p-4 outline-none focus:border-fuchsia-500 transition-colors text-white placeholder:text-zinc-700">
+                </div>
+              </div>
+
+              <div class="text-center pt-6 space-y-6">
+                <button type="submit" class="w-full md:w-auto bg-fuchsia-600 hover:bg-fuchsia-500 text-white px-16 py-6 font-black uppercase tracking-widest text-sm transition-all shadow-xl shadow-fuchsia-600/20 active:scale-95 flex items-center justify-center gap-4 mx-auto">
+                  <i class="fa-solid fa-paper-plane"></i> Submit Application
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
